@@ -15,16 +15,19 @@ html {
     --font-family-title: "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
 
 }
-/*Foreground color for some classes, body and anchors*/
+/*Body*/
 body {
     color: var(--text-color);
-    font-family: var(--font-family-title);
+    font-family: var(--font-family-base);
 }
 
+
+/*Anchors*/
 a {
     color: #161616;
 }
 
+/*Classes*/
 .visually-hidden {
     display: none;
 }
@@ -37,6 +40,7 @@ a {
     color: var(--color-primary);
 }
 
+/*Headings*/
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-title);
 }
