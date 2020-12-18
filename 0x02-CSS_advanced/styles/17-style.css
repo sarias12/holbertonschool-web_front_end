@@ -124,10 +124,12 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: var(--font-weight-bold);
 }
 
-/* Resetting the CSS stylesheet for browser consistency*/
-@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
-
 /*Footer*/
 .footer {
     padding: var(--footer-padding);
 }
+
+/* Resetting the CSS stylesheet for browser consistency*/
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+
+
