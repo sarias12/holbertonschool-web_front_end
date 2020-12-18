@@ -180,7 +180,7 @@ padding: 10rem 40rem 2rem 0;
     width: 0;
     height: 0.2rem;
 }
- .nav .nav-item:hover .nav-link {
+ .nav .nav-item:hover .nav-link::before {
      background-color: var(--color-primary);
      width: 100%;
  }
