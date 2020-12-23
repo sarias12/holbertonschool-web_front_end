@@ -1,0 +1,6 @@
+/* Sass file that assigns a width to the columns with a loop */
+@for $num from 1 to 5 {
+    .col-#{$num} {
+        width: 100% / $num;
+    }
+}
