@@ -1,0 +1,15 @@
+$hexColor: #3D3D3D;
+$bg-Color: #6D6D6D;
+
+body {
+    color: $hexColor;
+    background-color: $bg-Color;
+}
+
+p {
+    color: $hexColor;
+}
+
+h2 {
+    background-color: $bg-Color;
+}
