@@ -1,0 +1,7 @@
+/* Sass file that assigns text color to the first child */
+body {
+    color: #3D3D3D3D;
+    & > .red {
+        color: #FF0000;
+    }
+}
