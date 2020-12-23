@@ -1,0 +1,9 @@
+/* Sass file tha assings the text color #3D3D3D to the tags  HTML and P (Usign Sass variable) */
+$hex-Color: #3D3D3D;
+body {
+    color: $hex-Color;
+}
+
+p {
+    color: $hex-Color;
+}
