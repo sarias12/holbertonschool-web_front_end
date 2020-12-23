@@ -1,0 +1,13 @@
+/* Sass file that assings font size and font size to all tags of class .info and text color to all tags of class .warning or .success, and extend style of the class .info*/
+.info, .success, .warning {
+    font-size: 12px;
+}
+
+.success {
+    color: #00FF00;
+
+}
+.warning {
+    color: #FF0000;
+
+}
