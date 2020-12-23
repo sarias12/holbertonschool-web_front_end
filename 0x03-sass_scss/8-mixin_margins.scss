@@ -1,0 +1,14 @@
+/* Sass file that assigns margin to the body and div tags usign mixin */
+@mixin margin-lr($pixeles) {
+    margin-left: $pixeles;
+    margin-right: $pixeles;
+
+}
+
+body {
+    @include margin-lr(10px);
+}
+
+div {
+    @include margin-lr(15px);
+}
