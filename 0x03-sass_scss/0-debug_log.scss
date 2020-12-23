@@ -1,3 +1,2 @@
 /*Sass file that prints Hello world in the debug output.*/
-$Greeting: 'Hello World';
-@debug $Greeting;
+@debug 'Hello World';
