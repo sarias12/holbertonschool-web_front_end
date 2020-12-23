@@ -1,0 +1,16 @@
+/*Sass file that assigns font size  and color to h1 tags according to screen */
+$size: 20px;
+h1 {
+    font-size: $size;
+    @for $var from 1 to 4 {
+        @media screen and (max-width: 1280px - (320 * $var)){
+            $size:  $size - ($var * 2px);
+            font-size:$size;
+            @if $var == 3 {
+                &.small {
+                    color: #1D1D1D;
+                }
+            }
+        }
+    }
+}
