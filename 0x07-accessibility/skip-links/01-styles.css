@@ -188,6 +188,7 @@ a:active {
     clip: rect(1px, 1px, 1px, 1px);
     white-space: nowrap;
 }
+
 .off-screen {
     left: -100vw;
     position: absolute;
@@ -205,9 +206,9 @@ a:active {
     transform: translateY(-1rem);
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 }
-.skip-links:focus {
+.skip-link:focus {
     opacity: 1;
-    transform: translateY(0) ;
+    transform: translateY(0);
 }
 
 /*** 2. LAYOUT ***/
