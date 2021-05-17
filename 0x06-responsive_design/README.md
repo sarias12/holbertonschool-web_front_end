@@ -55,11 +55,11 @@ What you should learn from this project:
 ### [9. Improve the "Footer" section](./09-styles.css)
 
 
-### [10. Fix the top header background](./10-article.html)
+### [10. Fix the top header background](./10-styles.css)
 
 
 
-### [11. Make the article page responsive](./11-article.html)
+### [11. Make the article page responsive](./100-styles.css)
 
 
 
