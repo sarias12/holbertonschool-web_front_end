@@ -1,7 +1,7 @@
 // Binding + Closure
 "use strict";
 
-var user = {
+let user = {
     hobby: 'Calligraphy',
     favoriteSport: 'Hockey',
     astrologicalSign: 'Aries',
@@ -15,7 +15,7 @@ function logWelcomeUser(welcomeString) {
     console.log(`${welcomeString}, ${this.firstName}. Your occupation is: ${this.occupation}`)
 }
 
-var bindLogWelcomeUser = logWelcomeUser.bind(user);
+let bindLogWelcomeUser = logWelcomeUser.bind(user);
 
 // Test 
 bindLogWelcomeUser('Welcome');
