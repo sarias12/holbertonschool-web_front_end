@@ -1,31 +1,31 @@
 // Private methods with closure
 "use strict";
 
-var studentHogwarts = function () {
+let studentHogwarts = function () {
     
     // Private variables
-    var privateScore = 0;
-    var name = null;
+    let privateScore = 0;
+    let name = null;
 
      // Private methods
-    var changeScoreBy =  function  (points) {
+    let changeScoreBy =  function  (points) {
         return privateScore += points;
     }
 
     // Public Methods
-    var setName = function(newName) {
+    let setName = function(newName) {
         name = newName;
         return name;
     }
 
-    var rewardStudent = function() {
+    let rewardStudent = function() {
         changeScoreBy(1);
     }
 
-    var penalizeStudent = function() {
+    let penalizeStudent = function() {
         changeScoreBy(-1);
     }
-    var getScore = function () {
+    let getScore = function () {
         return `${name}: ${privateScore}`
     }
     
