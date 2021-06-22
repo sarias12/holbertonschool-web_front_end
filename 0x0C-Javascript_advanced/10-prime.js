@@ -1,10 +1,10 @@
 // Execution stack & timing execution
 function countPrimeNumbers() {
-    var currentNumber = 2;
-    var primes = [];
+    let currentNumber = 2;
+    let primes = [];
     while ( currentNumber <= 100 ) {
-        var i = 1;
-        var dividerCounter = 0;
+        let i = 1;
+        let dividerCounter = 0;
         while (i <= currentNumber) {
             if (currentNumber % i == 0){
                 dividerCounter += 1;
@@ -23,11 +23,11 @@ function countPrimeNumbers() {
 }
 
 // Measuring the execution time of the function and Running the function countPrimeNumbers 100 times
-var startTime = performance.now();
+let startTime = performance.now();
 for (let index = 0; index < 100; index++) {
     countPrimeNumbers();
 }
-var endTime = performance.now();
+let endTime = performance.now();
 console.log("Execution time of calculating prime numbers 100 times was " + (endTime - startTime) + " milliseconds.");
 
 
