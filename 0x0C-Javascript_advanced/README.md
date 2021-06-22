@@ -25,7 +25,7 @@ What you should learn from this project:
 ---
 
 
-### [0. Lexical scoping and welcome message](./0-welcome.j)
+### [0. Lexical scoping and welcome message](./0-welcome.js)
 
 ### [1. Closure Scope Chain](./1-nested_functions.js)
 
