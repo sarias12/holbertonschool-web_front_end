@@ -1,6 +1,6 @@
 // Binding
 "use strict";
-var roomDimensions = {
+let roomDimensions = {
     width: 50,
     length: 100,
     getArea: function () {
@@ -9,7 +9,7 @@ var roomDimensions = {
 }
 
 /*binding the object roomDimensions to the getArea function*/
-var boundGetArea = roomDimensions.getArea.bind(roomDimensions);
+let boundGetArea = roomDimensions.getArea.bind(roomDimensions);
 
 //Test
 boundGetArea();
