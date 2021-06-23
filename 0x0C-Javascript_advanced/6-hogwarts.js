@@ -43,7 +43,7 @@ harry.rewardStudent();
 harry.rewardStudent();
 harry.rewardStudent();
 harry.rewardStudent();
-harry.getScore();
+console.log(harry.getScore());
 
 let draco = studentHogwarts();
 draco.setName('Draco');
@@ -51,13 +51,8 @@ draco.rewardStudent();
 draco.penalizeStudent();
 draco.penalizeStudent();
 draco.penalizeStudent();
-draco.getScore();
+console.log(draco.getScore());
 
-
-// Test 
-
-harry.getScore();
-draco.getScore();
 
 /* Output expected 
 
