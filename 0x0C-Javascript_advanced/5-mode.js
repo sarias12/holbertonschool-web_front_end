@@ -51,3 +51,4 @@ function main() {
     screamModeButton.onclick = () => screamMode();
     body.appendChild(screamModeButton);
 }
+main();
