@@ -30,10 +30,10 @@ let studentHogwarts = function () {
     }
     
     return{
-        setName,
-        rewardStudent,
-        penalizeStudent,
-        getScore
+        setName: setName,
+        rewardStudent: rewardStudent,
+        penalizeStudent: penalizeStudent,
+        getScore: getScore
     }
 }
 
