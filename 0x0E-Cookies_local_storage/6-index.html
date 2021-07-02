@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CND js-cookie-->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <title>Session storage</title>
+
+</head>
+<body>
+
+
+    
+    <script>
+        // array - item's store
+        let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+        // checking if web browser support local storage and Running the functions
+        if (typeof(Storage) !== "undefined") {
+            createStore();
+            displayCart();
+        } else {
+            alert('Sorry, your browser does not support Web storage. Try again with a better one')
+        }
+        
+        // Function adding items to Session storage
+        function addItemToCart(item) {
+            sessionStorage.setItem(item, true);
+        }
+
+        // Function for displays items's list  of the store
+        function createStore() {
+            let list = document.createElement('ul');
+            for (let index = 0; index < availableItems.length; index++) {
+                let itemList = document.createElement('li');
+                let textItemList = document.createTextNode(availableItems[index])
+                itemList.appendChild(textItemList)
+                itemList.onclick = () => addItemToCart(availableItems[index]);
+                list.appendChild(itemList);
+                
+            }
+            document.body.appendChild(list);
+        }
+        
+        //  Function for displays the shopping cart's summary
+        function displayCart() {
+            if (sessionStorage.length > 0){
+                let paragraph = document.createElement('p');
+                let textNode = document.createTextNode(`You previously had ${sessionStorage.length} items in your cart`)
+                paragraph.appendChild(textNode)
+                document.body.appendChild(paragraph)
+            }
+        }
+    </script>
+</body>
+</html>
