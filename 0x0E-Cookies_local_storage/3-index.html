@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete cookie and mini application</title>
+</head>
+<body>
+    <div id="login-form">
+        <h2>Login to the website</h2>
+        <form>
+            <input type="text" name="first  name" id="firstname" placeholder="Firstname">
+            <input type="email" name="email" id="email" placeholder="Email">
+            <button onclick="setCookies()">Log me in</button>
+        </form>
+        <h2>Cookies</h2>
+        <button onclick="showCookies()">Show the cookies</button>
+    </div>
+    
+    <script>
+
+        //A Function to Set a Cookie with expiration date and specific path
+        function setCookies() {
+            let firstname = document.getElementById("firstname").value;
+            let email = document.getElementById("email").value;
+            const d = new Date();
+            d.setTime(d.getTime() +(10 * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = `firstname=${firstname}; ${expires}; path=/;`
+            document.cookie = `email=${email}; ${expires}; path=/;`
+        }
+
+        // A Function to Get a Cookie
+        function getCookie(name) {
+            let arrCookies = document.cookie.split(';')
+            let objtCookies= {}
+            for (let index = 0; index < arrCookies.length; index++) {
+                let record = arrCookies[index];
+                let arrRecord = []
+                while(record.charAt(0) == ' ') {
+                    record = record.substring(1)
+                }
+                    arrRecord = record.split('=');
+                    objtCookies[arrRecord[0]] = arrRecord[1] 
+                
+            }
+            return objtCookies[name] ? objtCookies[name] : ''
+        }
+        
+         // A Function to show a Cookie
+        function showCookies() {
+            const paragraph = document.createElement("p");
+            let textNode = document.createTextNode(`Email: ${getCookie('email')} - Firstname: ${getCookie('firstname')}`);
+            paragraph.appendChild(textNode);
+            document.body.appendChild(paragraph);
+        }
+
+
+        // Funtion that show a form
+
+        function showForm() {
+            let message = document.getElementById('welcomeMsg');
+            if (message){
+                message.remove();
+            }
+            document.getElementById("login-form").style.display = "block"
+        }
+        //Function that hides a form
+        function hideForm() {
+            document.getElementById("login-form").style.display = "none"
+        }
+
+        //Funtion that show form and delete cookies 
+        function deteleCookiesAndShowForm() {
+
+            document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            showForm();
+        }
+
+        //Funtion that show welcome message or form
+        function showWelcomeMessageOrForm() {
+            if(getCookie('firstname') && getCookie('firstname') != '') {
+
+                hideForm();
+
+                const header = document.createElement('h1')
+                header.id = 'welcomeMsg'
+                let textNode = document.createTextNode(`Welcome: ${getCookie('firstname')} `)
+                header.appendChild(textNode)
+
+                const logoutText = document.createElement("a");
+                textNode = document.createTextNode(`(logout)`);
+                logoutText.appendChild(textNode);
+                logoutText.style.right = '10px';
+                logoutText.style.fontWeight = 'normal';
+                logoutText.style.fontStyle = 'italic';
+                logoutText.onclick = () => { deteleCookiesAndShowForm() };
+
+                header.appendChild(logoutText);
+                document.body.appendChild(header);
+            } else {
+                showForm();
+            }
+        }
+
+        showWelcomeMessageOrForm();
+        
+    </script>
+</body>
+</html>
