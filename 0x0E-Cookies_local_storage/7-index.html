@@ -34,7 +34,6 @@
 
         // Function adding items from Session storage
         function addItemToCart(item) {
-            console.log(typeof(item), item)
             let cart = getCartFromStorage();
             if (cart[item]) {
                 cart[item] = cart[item] + 1;
@@ -49,7 +48,6 @@
         function removeItemToCart(item) {
             
             let cart = getCartFromStorage();
-            console.log(item + "Aquiii")
             delete cart[item];
             sessionStorage.cart = JSON.stringify(cart);
             displayCart();
