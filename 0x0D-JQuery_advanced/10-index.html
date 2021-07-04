@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Another Get API</title>
+
+		<!-- JQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Script -->
+        <script type="application/javascript">
+                function addPostRow(data) {
+                    $('body').append(
+                        $('<p></p>')
+                        .append($('<span></span>')
+                            .text(`Post created with id ${data['id']}, title: ${data['title']}, author: ${data['author']}`)
+                        )
+                        
+                    )
+                }
+
+                function listPosts() {
+                    let url = 'http://localhost:3000/posts';
+
+                    // Get request 
+                    $.get(url, function(data, status, xhr) {
+                        if (status == 'success' && xhr.status == 200) {
+                            for (let index = 0; index < data.length; index++) {
+                                addPostRow(data[index]);
+                            }
+                        } else {
+                            alert('Server Error');
+                        }
+                        
+                        }).fail(function() {
+                            alert('Server Error');
+                        })
+                    }
+                
+                    $(document).ready(function(){
+                        listPosts();
+                    })
+            
+        </script>
+
+
+    </head>
+
+    <body>
+    </body>
+
+</html>
