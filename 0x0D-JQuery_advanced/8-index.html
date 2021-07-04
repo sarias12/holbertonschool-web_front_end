@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Pagination</title>
+
+		<!-- JQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Script -->
+        <script type="application/javascript">
+                
+                // Funcion that creates a Search form
+                function createSearchForm() {
+                    $('body').append(`<input type="text">`);
+                    $('body').append(
+                        $('<input type="submit">')
+                            .click(function () {
+                                queryWikipedia(
+                                    $("input").first().val()
+                                )
+                            })
+                    );
+                    $('body').append(`<ul id="articles"></ul>`);
+                    $('body').append(`<ul id="pagination"></ul>`);
+                    
+                }
+
+                // Function that add a new Article
+                function addNewArticle (id, title, snippet) {
+                    $('#articles').append(
+                        $('<li></li>').append(
+                            $('<p></p>').append(
+                                $('<span></span>').text(`${id} - `),
+                                $('<b></b>').text(`${title}`)
+                            ),
+                            $('<p></p>').html(snippet)
+                        )
+                    )
+                }
+                // Get Function for Wikipedia API
+                function queryWikipedia(search, offset=0) {
+
+                    // AJAX - Get request 
+                    $.ajax({
+
+                        // Building the url for get request
+                        url: "https://en.wikipedia.org/w/api.php?origin=*",
+
+                        //data object with attributes required to query
+                        data: {
+                            action: "query",
+                            list: "search",
+                            srsearch: search,
+                            sroffset: offset,
+                            format: "json"
+                        }, 
+                        success: function(data) {
+                            $('#articles').empty();
+                            let snippets = data.query.search;
+                            for (let index = 0; index < snippets.length; index++) {
+                                const item = snippets[index];
+                                addNewArticle(item['pageid'], item['title'], item['snippet']);
+                            }
+                            let numberOfItems = data.query.searchinfo['totalhits'];
+                            let currentOffset = data.continue['sroffset']
+                            buildPagination(numberOfItems, 10, currentOffset );
+                        }
+
+                    
+                })
+                
+                }
+
+                //Function building pagination
+                function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+                    $('#pagination').empty();
+                    let pages = numberOfItems / itemsPerPage;
+                    for (let index = 0; index < pages; index++) {
+                        let numberPage = 
+                            $('<li></li>')
+                                .text(index + 1)
+                                .css(
+                                    {
+                                        'cursor' :'pointer',
+                                        'padding-left': '10px',
+                                        'display': 'inline'
+                                    }
+                                )
+                                .click(function () {
+                                    queryWikipedia($("input").first().val(), index * 10)
+                                })
+                        if (index == (currentOffset / 10) - 1) {
+                            numberPage.css({'font-weight': 'bold'})
+                        } 
+                        $('#pagination').append(numberPage)
+                        
+                    }
+                }
+                
+            $(document).ready(function(){
+                createSearchForm();
+            })
+        </script>
+
+
+    </head>
+
+    <body>
+    </body>
+
+</html>
