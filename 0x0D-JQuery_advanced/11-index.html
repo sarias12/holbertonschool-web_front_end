@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Post query</title>
+
+		<!-- JQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- Script -->
+        <script type="application/javascript">
+
+                //Function that show post
+                function addPostRow(data) {
+                    $('body').append(
+                        $('<p></p>')
+                        .append($('<span></span>')
+                            .text(`Post created with id ${data['id']}, title: ${data['title']}, author: ${data['author']}`)
+                        )
+                        
+                    )
+                }
+
+                function listPosts() {
+                    let url = 'http://localhost:3000/posts';
+
+                    // Get request 
+                    $.get(url, function(data, status, xhr) {
+                        if (status == 'success' && xhr.status == 200) {
+                            for (let index = 0; index < data.length; index++) {
+                                addPostRow(data[index]);
+                            }
+                        } else {
+                            alert('Server Error');
+                        }
+                        
+                        }).fail(function() {
+                            alert('Server Error');
+                        })
+                    }
+
+                    // Funtion That Building Form 
+                    function buildForm() {
+                        $('body').append('<form></form>');
+                        $('form').append(
+                            $('<div></div').append('<label for="author">Author</label><input type="text" id="author">')
+                        )
+                        $('form').append(
+                            $('<div></div').append('<label for="title">Title</label><textarea id="title">')
+                        )
+                        $('form').append(
+                            $('<input type="submit">')
+                                .on({
+                                    click: function(e) {
+                                        sendForm()
+                                        e.preventDefault();}
+                                        
+                                
+                                    }
+                                ))
+    
+                    }
+
+                    // Function that send form - post request
+                    function sendForm() {
+                        $('form').after('<p>About to send the query to the API</p>');
+                        let sendData = {
+                            'title': $('#title').val(),
+                            'author': $('#author').val()
+                        }
+
+                        let url = 'http://localhost:3000/posts';
+
+                         // Post request 
+                        $.post(url, sendData, function(data, status, xhr) {
+                        debugger;
+                        if (status == 'success' && xhr.status >= 200) {
+                            addPostRow(data[index]);
+                        } else {
+                            alert('Error sending the POST query');
+                        }
+                        
+                        }).fail(function() {
+                            alert('Error sending the POST query');
+                        })
+                    }
+                
+                    $(document).ready(function(){
+                        buildForm();
+                        listPosts();
+                    })
+            
+        </script>
+
+
+    </head>
+
+    <body>
+    </body>
+
+</html>
