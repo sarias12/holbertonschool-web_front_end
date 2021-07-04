@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Val, before, and prepend functions</title>
+
+		<!-- JQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <!-- Script -->
+        <script type="application/javascript">
+            $(document).ready(function(){
+
+                // Function that Creates base Table
+                function createFamilyTree() {
+                    $("body").append(
+                        $(`<table></table>`).append(
+                            $('<thead></thead>').append(
+                                $('<tr></tr>').append(
+                                    $("<th></th>").text("Firstname"),
+                                    $("<th></th>").text("Lastname")
+                                )
+                            ),
+                            '<tbody></tbody>'
+                        )
+                        
+                    );
+                }
+
+                //Function That creates new row on the table
+                function addNewMember(firstname, lastname, position) {
+                    
+                    if (position == 'before'){
+                        $('tbody').prepend(
+                            $('<tr></tr>')
+                                .append(
+                                    $("<td></td>").text(firstname), 
+                                    $("<td></td>").text(lastname), 
+                                    $("<td></td>").text('(x)')
+                                        .click(function () {
+                                            $(this).parent().remove()
+                                        })
+                                        .css("background-color", "orange ")
+                                )
+                        )
+                    } else {
+                        $('tbody').append(
+                            $('<tr></tr>')
+                                .append(
+                                    $("<td></td>").text(firstname), 
+                                    $("<td></td>").text(lastname), 
+                                    $("<td></td>").text('(x)')
+                                        .click(function () {
+                                            $(this).parent().remove()
+                                        })
+                                        .css("background-color", "orange ")
+                            )
+                        )
+                    }
+                }
+                
+                // Funcion that creates form 
+                function createForm() {
+                    $('table').before(`<input type="text"> <input type="text">`);
+                    $('table').before(`<select></select>`);
+                    $('select').append($(`<option value="before">Before</option>`));
+                    $('select').append($(`<option value="after">After</option>`));
+                    $('select')
+                        .after($('<input type="submit">')
+                            .click(function () {
+                                addNewMember(
+                                    $('input').first().val(),
+                                    $("input:nth-of-type(2)").val(),
+                                    $('select').val(),
+                                )
+                            }
+                        ));
+                }
+                createFamilyTree();
+                createForm();
+                
+
+            });
+        </script>
+
+
+    </head>
+
+    <body>
+    </body>
+
+</html>
