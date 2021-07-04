@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Click attribute and remove function</title>
+
+		<!-- JQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <!-- Script -->
+        <script type="application/javascript">
+            $(document).ready(function(){
+
+                // Function that Creates base Table
+                function createFamilyTree() {
+                    $("body").append(
+                        $(`<table></table>`).append(
+                            $('<thead></thead>').append(
+                                $('<tr></tr>').append(
+                                    $("<th></th>").text("Firstname"),
+                                    $("<th></th>").text("Lastname")
+                                )
+                            ),
+                            '<tbody></tbody>'
+                        )
+                        
+                    );
+                }
+
+                //Function That creates new row on the table
+                function addNewMember(firstname, lastname) {
+                    $('tbody').append(
+                        $('<tr></tr>')
+                            .append(
+                                $("<td></td>").text(firstname), 
+                                $("<td></td>").text(lastname), 
+                                $("<td></td>").text('(x)')
+                                    .click(function () {
+                                        $(this).parent().remove()
+                                    })
+                                    .css("background-color", "orange ")
+                            )
+                    )
+                }
+                
+                createFamilyTree();
+                addNewMember('Guillaume', 'Salva');
+                addNewMember('Arielle', 'Snizt');
+                addNewMember('Fanette', 'Snizt');
+                addNewMember('Gerard', 'Snizt');
+                addNewMember('Victor', 'Salva');
+
+            });
+        </script>
+
+
+    </head>
+
+    <body>
+	
+    </body>
+
+</html>
