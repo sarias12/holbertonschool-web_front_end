@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>HTML function</title>
+
+		<!-- JQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+        <!-- Script -->
+        <script type="application/javascript">
+            $(document).ready(function(){
+
+                function createFamilyTree() {
+                    $("body").append(`<table></table>`);
+                    $('table').append(`<thead></thead>`, `<tbody></tbody>`);
+                    $('thead').append(`<tr></tr>`);
+                    $('tbody').append(`<tr></tr>`, `<tr></tr>`, `<tr></tr>`);
+                    $('tr').eq(0).append($("<th></th>").text("Firstname"), $("<th></th>").text("Lastname"));
+                    $('tr').eq(1).append($("<td></td>").text("Guillaume"), $("<td></td>").text("Salva"));
+                    $('tr').eq(2).append($("<td></td>").text("Paulette"), $("<td></td>").text("Salva"));
+                    $('tr').eq(3).append($("<td></td>").text("Antonie"), $("<td></td>").text("Salva"));
+                }
+                function replaceFamilyTree() {
+                    $('tbody')
+                        .html($("<tr></tr")
+                            .append($("<td></td>").text("Gerard"), $("<td></td>").text("Bonissa")));
+                }
+                createFamilyTree();
+                replaceFamilyTree();
+
+            });
+        </script>
+
+
+    </head>
+
+    <body>
+	
+    </body>
+
+</html>
