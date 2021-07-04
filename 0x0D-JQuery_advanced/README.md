@@ -21,7 +21,7 @@ What you should learn from this project:
 
 ---
 
-### [Setup your dev environment](./0-index.html)
+### [0. Setup your dev environment](./0-index.html)
 
 ### [1. Creating a DOM element](./1-index.html)
 
